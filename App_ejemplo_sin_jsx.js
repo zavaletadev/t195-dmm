@@ -16,26 +16,24 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
-	return (
-		<View style={styles.container}>
-			<Text
-				style={{ color: '#00FF00', fontSize: 30 }}
-			>
-				HOLA MUNDO
-			</Text>
-			<MiElemento />
-			<StatusBar style='auto' />
-		</View>
-	);
-}
-
-function MiElemento() {
-	return (
-		<View>
-			<Text style={{ color: '#FF0000' }}>
-				Aquí en mi elemento
-			</Text>
-		</View>
+	return React.createElement(
+		View,
+		{
+			style: styles.container,
+		},
+		React.createElement(
+			Text,
+			{
+				style: {
+					color: '#00FF00',
+					fontSize: 30,
+				},
+			},
+			'XD'
+		),
+		React.createElement(StatusBar, {
+			style: 'auto',
+		})
 	);
 }
 
