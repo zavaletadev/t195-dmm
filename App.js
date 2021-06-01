@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import TableroAjedrez from './src/components/TableroAjedrez';
 
-import { Entypo } from '@expo/vector-icons';
+import { AntDesign, Entypo } from '@expo/vector-icons';
 
 // const App = () => {
 // 	return (
@@ -151,7 +151,7 @@ const App = (props) => {
 					style={{
 						fontSize: 26,
 						fontWeight: 'bold',
-						color: '#ffc947',
+						color: '#0a1931',
 					}}
 				>
 					Profe &amp; Arquitecto de Apps
@@ -160,20 +160,102 @@ const App = (props) => {
 			<View
 				style={{
 					flex: 1,
+					flexDirection: 'row',
 					backgroundColor: '#ffc947',
 				}}
 			>
-				<Text style={{ fontSize: 33 }}>
-					<Entypo
-						name='old-phone'
-						size={33}
-						color='#0a1931'
-					/>
-					{'\n'}
-					442 2048329
-				</Text>
+				<View
+					style={{
+						flex: 1,
+						alignItems: 'center',
+						justifyContent: 'center',
+					}}
+				>
+					<Text
+						style={{
+							fontSize: 16,
+							textAlign: 'center',
+							fontWeight: 'bold',
+							color: '#185adb',
+							marginBottom: 30,
+						}}
+					>
+						<Entypo
+							name='old-phone'
+							size={32}
+							color='#0a1931'
+						/>
+						{'\n\n'}
+						(442) 204 8329
+					</Text>
 
-				<Button title='Llamar' color='#0000FF' />
+					<Button
+						title='Llamar'
+						color='#185adb'
+					/>
+				</View>
+
+				<View
+					style={{
+						flex: 1,
+						alignItems: 'center',
+						justifyContent: 'center',
+					}}
+				>
+					<Text
+						style={{
+							fontSize: 16,
+							textAlign: 'center',
+							fontWeight: 'bold',
+							color: '#185adb',
+							marginBottom: 30,
+						}}
+					>
+						<Entypo
+							name='email'
+							size={32}
+							color='#0a1931'
+						/>
+						{'\n\n'}
+						rzz@gmail.com
+					</Text>
+
+					<Button
+						title='Escribir'
+						color='#185adb'
+					/>
+				</View>
+
+				<View
+					style={{
+						flex: 1,
+						alignItems: 'center',
+						justifyContent: 'center',
+					}}
+				>
+					<Text
+						style={{
+							fontSize: 16,
+							textAlign: 'center',
+							fontWeight: 'bold',
+							color: '#185adb',
+							marginBottom: 30,
+						}}
+					>
+						<AntDesign
+							name='github'
+							size={32}
+							color='#0a1931'
+						/>
+						{'\n\n'}
+						@zavaletamx
+					</Text>
+
+					<Button
+						title='Ver perfil'
+						color='#185adb'
+					/>
+				</View>
 			</View>
 		</View>
 	);
