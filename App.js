@@ -1,87 +1,10 @@
 import React from 'react';
-import {
-	Button,
-	Image,
-	SafeAreaView,
-	ScrollView,
-	StatusBar,
-	Switch,
-	Text,
-	View,
-} from 'react-native';
+
 import TableroAjedrez from './src/components/TableroAjedrez';
-
-import { AntDesign, Entypo } from '@expo/vector-icons';
-
-// const App = () => {
-// 	return (
-// 		<SafeAreaView
-// 			style={{
-// 				flex: 1,
-// 			}}
-// 		>
-// 			<View
-// 				style={{
-// 					flex: 1,
-// 					backgroundColor: '#542e71',
-// 				}}
-// 			/>
-// 			<View
-// 				style={{
-// 					flex: 1,
-// 					backgroundColor: '#fb3640',
-// 				}}
-// 			/>
-// 			<View
-// 				style={{
-// 					flex: 1,
-// 					backgroundColor: '#fdca40',
-// 				}}
-// 			/>
-// 			<View
-// 				style={{
-// 					flex: 1,
-// 					backgroundColor: '#a799b7',
-// 					flexDirection: 'row',
-// 				}}
-// 			>
-// 				<View
-// 					style={{
-// 						flex: 1,
-// 						backgroundColor: '#23049d',
-// 					}}
-// 				/>
-// 				<View
-// 					style={{
-// 						flex: 1,
-// 						backgroundColor: '#aa2ee6',
-// 					}}
-// 				/>
-// 				<View
-// 					style={{
-// 						flex: 1,
-// 						backgroundColor: '#ff79cd',
-// 						flexDirection: 'column',
-// 					}}
-// 				>
-// 					<View
-// 						style={{
-// 							flex: 1,
-// 							backgroundColor: '#2b2e4a',
-// 						}}
-// 					/>
-
-// 					<View
-// 						style={{
-// 							flex: 1,
-// 							backgroundColor: '#e84545',
-// 						}}
-// 					/>
-// 				</View>
-// 			</View>
-// 		</SafeAreaView>
-// 	);
-// };
+import EjemploFlex from './src/components/EjemploFlex';
+import EstilosComponentes from './src/components/EstilosComponentes';
+import EstilosObjeto from './src/components/EstilosObjeto';
+import EstilosArchivo from './src/components/EstilosArchivo';
 
 /*
 Existen diversas maneras de generar un estilo en RN
@@ -94,171 +17,36 @@ CSS
 3.- Crear un componente externo de estilos
 */
 
-// const App = (props) => {
-// 	return <TableroAjedrez />;
-// };
+/*
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Ejemplo de flex
+const App = (props) => {
+	return <EjemploFlex />;
+};
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Ejemplo de tablero de ajedrez
+const App = (props) => {
+	return <TableroAjedrez />;
+};
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Ejemplo de estilos directo en componentes
+const App = (props) => {
+	return <EstilosComponentes />;
+};
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Ejemplo de estilos desde un objeto
+const App = (props) => {
+	return <EstilosObjeto />;
+};
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Ejemplo de estilos desde un archivo
+const App = (props) => {
+	return <EstilosArchivo />;
+};
+*/
 
 const App = (props) => {
-	return (
-		<View style={{ flex: 1 }}>
-			<View
-				style={{
-					flex: 1,
-					backgroundColor: '#185adb',
-					alignItems: 'center',
-					justifyContent: 'center',
-				}}
-			>
-				{/**
-				 * Imagenes:
-				 * Siempre agregar ancho y alto
-				 *
-				 * Imagen a partir de una URL
-				 */}
-				{/* <Image
-					source={{
-						uri: 'https://patijinich.com/es/wp-content/uploads/sites/3/2019/08/804-tacos-campechanos-de-suadero-longaniza-y-chicharron-con-salsa-callejera.jpg',
-					}}
-					style={{
-						width: 150,
-						height: 150,
-					}}
-				/> */}
-				{/**
-				 * Imagen a partir de un archivo local
-				 */}
-				<Image
-					source={require('./assets/media/images/fotoperfil.jpg')}
-					style={{
-						width: 150,
-						height: 150,
-						resizeMode: 'cover',
-						borderRadius: 75,
-						marginBottom: 20,
-					}}
-				/>
-				<Text
-					style={{
-						fontSize: 22,
-						color: '#feddbe',
-						marginBottom: 20,
-					}}
-				>
-					Raúl Zavaleta Zea
-				</Text>
-
-				<Text
-					style={{
-						fontSize: 26,
-						fontWeight: 'bold',
-						color: '#0a1931',
-					}}
-				>
-					Profe &amp; Arquitecto de Apps
-				</Text>
-			</View>
-			<View
-				style={{
-					flex: 1,
-					flexDirection: 'row',
-					backgroundColor: '#ffc947',
-				}}
-			>
-				<View
-					style={{
-						flex: 1,
-						alignItems: 'center',
-						justifyContent: 'center',
-					}}
-				>
-					<Text
-						style={{
-							fontSize: 16,
-							textAlign: 'center',
-							fontWeight: 'bold',
-							color: '#185adb',
-							marginBottom: 30,
-						}}
-					>
-						<Entypo
-							name='old-phone'
-							size={32}
-							color='#0a1931'
-						/>
-						{'\n\n'}
-						(442) 204 8329
-					</Text>
-
-					<Button
-						title='Llamar'
-						color='#185adb'
-					/>
-				</View>
-
-				<View
-					style={{
-						flex: 1,
-						alignItems: 'center',
-						justifyContent: 'center',
-					}}
-				>
-					<Text
-						style={{
-							fontSize: 16,
-							textAlign: 'center',
-							fontWeight: 'bold',
-							color: '#185adb',
-							marginBottom: 30,
-						}}
-					>
-						<Entypo
-							name='email'
-							size={32}
-							color='#0a1931'
-						/>
-						{'\n\n'}
-						rzz@gmail.com
-					</Text>
-
-					<Button
-						title='Escribir'
-						color='#185adb'
-					/>
-				</View>
-
-				<View
-					style={{
-						flex: 1,
-						alignItems: 'center',
-						justifyContent: 'center',
-					}}
-				>
-					<Text
-						style={{
-							fontSize: 16,
-							textAlign: 'center',
-							fontWeight: 'bold',
-							color: '#185adb',
-							marginBottom: 30,
-						}}
-					>
-						<AntDesign
-							name='github'
-							size={32}
-							color='#0a1931'
-						/>
-						{'\n\n'}
-						@zavaletamx
-					</Text>
-
-					<Button
-						title='Ver perfil'
-						color='#185adb'
-					/>
-				</View>
-			</View>
-		</View>
-	);
+	return <EstilosArchivo />;
 };
 
 export default App;
