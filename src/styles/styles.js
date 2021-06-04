@@ -54,6 +54,23 @@ const styles = StyleSheet.create({
 		color: colores.textoAzul,
 		marginBottom: 30,
 	},
+	inputIos: {
+		marginHorizontal: 10,
+		marginVertical: 5,
+		paddingHorizontal: 10,
+		paddingVertical: 5,
+		borderWidth: 2,
+		borderColor: '#808080',
+		borderRadius: 10,
+	},
+	inputAndroid: {
+		marginHorizontal: 10,
+		marginVertical: 5,
+		paddingHorizontal: 10,
+		paddingVertical: 5,
+		borderBottomWidth: 2,
+		borderColor: '#808080',
+	},
 });
 
 export default styles;

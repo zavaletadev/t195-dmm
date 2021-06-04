@@ -5,6 +5,7 @@ import EjemploFlex from './src/components/EjemploFlex';
 import EstilosComponentes from './src/components/EstilosComponentes';
 import EstilosObjeto from './src/components/EstilosObjeto';
 import EstilosArchivo from './src/components/EstilosArchivo';
+import Formulario from './src/components/Formulario';
 
 /*
 Existen diversas maneras de generar un estilo en RN
@@ -43,10 +44,15 @@ Ejemplo de estilos desde un archivo
 const App = (props) => {
 	return <EstilosArchivo />;
 };
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Ejemplo de estilos en componentes de un formulario
+const App = (props) => {
+	return <Formulario />;
+};
 */
 
 const App = (props) => {
-	return <EstilosArchivo />;
+	return <Formulario />;
 };
 
 export default App;
