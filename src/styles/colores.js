@@ -1,8 +1,8 @@
 const colores = {
-	textoAmarilloClaro: '#ff884b',
-	textoAmarillo: '#ffc764',
-	textoAzulClaro: '#cdfffc',
-	textoAzul: '#ff577f',
+	textoAmarilloClaro: '#feddbe',
+	textoAmarillo: '#ffc947',
+	textoAzulClaro: '#185adb',
+	textoAzul: '#0a1931',
 };
 
 export default colores;

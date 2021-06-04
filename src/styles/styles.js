@@ -15,22 +15,22 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 	},
 	fondoAzul: {
-		backgroundColor: '#ff577f',
+		backgroundColor: '#185adb',
 	},
 	fondoAmarillo: {
-		backgroundColor: '#ff884b',
+		backgroundColor: '#ffc947',
 	},
 	textoAmarilloClaro: {
-		color: '#cdfffc',
+		color: '#feddbe',
 	},
 	textoAmarillo: {
-		color: '#ff884b',
+		color: '#ffc947',
 	},
 	textoAzulClaro: {
-		color: '#cdfffc',
+		color: '#185adb',
 	},
 	textoAzul: {
-		color: '#ff577f',
+		color: '#0a1931',
 	},
 	imagenPerfil: {
 		width: 150,
