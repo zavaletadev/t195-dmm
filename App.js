@@ -6,6 +6,7 @@ import EstilosComponentes from './src/components/EstilosComponentes';
 import EstilosObjeto from './src/components/EstilosObjeto';
 import EstilosArchivo from './src/components/EstilosArchivo';
 import Formulario from './src/components/Formulario';
+import Contador from './src/components/Contador';
 
 /*
 Existen diversas maneras de generar un estilo en RN
@@ -49,10 +50,15 @@ Ejemplo de estilos en componentes de un formulario
 const App = (props) => {
 	return <Formulario />;
 };
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Ejemplo de estados 
+const App = (props) => {
+	return <Formulario />;
+};
 */
 
 const App = (props) => {
-	return <Formulario />;
+	return <Contador />;
 };
 
 export default App;
