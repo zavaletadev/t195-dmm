@@ -7,7 +7,17 @@ import EstilosObjeto from './src/components/EstilosObjeto';
 import EstilosArchivo from './src/components/EstilosArchivo';
 import Formulario from './src/components/Formulario';
 import Contador from './src/components/Contador';
+import Menu from './src/components/Menu';
+import TarjetaCs from './src/components/TarjetaCs';
 
+/**
+ * Para generar una navegación se neceita:
+ * 1.- NavigationContainer (SOLO UNO POR APP)
+ * 2.- Un tipo de navegacion (Stack, Tab o Drawer)
+ */
+import { NavigationContainer } from '@react-navigation/native';
+//Navegacion por stack (pila o pestañas)
+import { createStackNavigator } from '@react-navigation/stack';
 /*
 Existen diversas maneras de generar un estilo en RN
 Todas ellas, basadas en la versatilidad del diseño con 
@@ -51,14 +61,46 @@ const App = (props) => {
 	return <Formulario />;
 };
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 Ejemplo de estados 
 const App = (props) => {
-	return <Formulario />;
+	return <Contador />;
 };
 */
 
+/**
+ * Creamos la estructura de Screens asociadas al stack
+ * indicando:
+ * 1.- Sobrenombre para navegar
+ * 2.- El componente con el contenido de la screen
+ *
+ * Cuando usamos ReactNavigation, el elemento
+ * padre de la navegación es NavigationContainer y
+ * SOLO DEBERÍA HABER UNO POR APP
+ */
+
+const Stack = createStackNavigator();
 const App = (props) => {
-	return <Contador />;
+	return (
+		<NavigationContainer>
+			<Stack.Navigator>
+				<Stack.Screen
+					name='Menu'
+					component={Menu}
+				/>
+
+				<Stack.Screen
+					name='EjemploStates'
+					component={Contador}
+				/>
+
+				<Stack.Screen
+					name='EjemploCs'
+					component={TarjetaCs}
+				/>
+			</Stack.Navigator>
+		</NavigationContainer>
+	);
 };
 
 export default App;

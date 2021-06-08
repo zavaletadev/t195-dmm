@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Button, Text, Alert } from 'react-native';
 const Contador = (props) => {
 	/**
 	 * VDOM
-	 * Vrtual DOM (Document Object Model) y es la manera
+	 * Virtual DOM (Virtual Document Object Model) y es la manera
 	 * en que los navegador renderizan un sitio web
 	 *
 	 * STATES
@@ -13,19 +13,24 @@ const Contador = (props) => {
 	 * a la variable original, estamos creando una copia
 	 * para usarla
 	 *
-	 * Un estate contiene =
+	 * Un estate contiene:
 	 * 1.- el nombre de la variable de estado
 	 * 2.- el nombre de la función que clonará
 	 *     el nuevo contenido del state
-	 * const useState(_NOM_ST_, _FN_ST_);
+	 * const [_NOM_ST_, _FN_ST_] = useState(_VALOR_INICIAL_);
 	 */
+	const [contador, setContador] = useState(0);
 
-	let contador = 200;
 	/**
 	 * Constante que encapsula a una función anónima para
 	 * transportarse a cualquier componente
 	 */
-	const disminuir = () => Alert.alert('Aqui en el -');
+	const disminuir = () => {
+		setContador(contador - 1);
+		//Alert.alert('Aqui en el -');
+	};
+
+	//let contador = 1000;
 
 	return (
 		<View style={{ flex: 1, flexDirection: 'column' }}>
@@ -44,9 +49,10 @@ const Contador = (props) => {
 				<Button
 					title='+'
 					onPress={() => {
-						contador = contador + 1;
+						//contador = contador + 1;
+						setContador(contador + 1);
 						console.log(contador);
-						Alert.alert('Aqui  en el +');
+						//Alert.alert('Aqui  en el +');
 					}}
 				/>
 			</View>
