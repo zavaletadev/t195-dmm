@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
+	Alert,
+	Button,
 	Platform,
 	SafeAreaView,
 	ScrollView,
@@ -13,6 +15,26 @@ import {
 import estilos from './../styles/styles';
 
 const Formulario = (props) => {
+	/**
+	 * Para tomar los valores de un formulario
+	 * creamos variables de estado para almacenar
+	 * los valores insertados
+	 */
+	const [nombre, setNombre] = useState('');
+	const [usuario, setUsuario] = useState('');
+	const [rfc, setRfc] = useState('');
+	const [acercaDe, setAcercaDe] = useState('');
+	const [telefono, setTelefono] = useState('');
+	const [valorSwitch, setValorSwitch] = useState(false);
+
+	/**
+	 * Constante que encapsula la validación
+	 * del formulario
+	 */
+	const validaFormulario = () => {
+		Alert.alert('Aquí en la validación');
+	};
+
 	return (
 		<SafeAreaView style={estilos.contenedor}>
 			<ScrollView>
@@ -39,6 +61,8 @@ const Formulario = (props) => {
 					keyboardType='default'
 					autoCapitalize='words'
 					maxLength={100}
+					value={nombre}
+					onChangeText={(text) => setNombre(text)}
 				/>
 				<TextInput
 					style={
@@ -51,6 +75,10 @@ const Formulario = (props) => {
 					autoCapitalize='none'
 					autoCorrect={false}
 					maxLength={12}
+					value={usuario}
+					onChangeText={(text) =>
+						setUsuario(text)
+					}
 				/>
 				<TextInput
 					style={
@@ -63,8 +91,9 @@ const Formulario = (props) => {
 					autoCapitalize='characters'
 					autoCorrect={false}
 					maxLength={13}
-					value='ZAZR880529GB5'
-					editable={false}
+					value={rfc}
+					onChangeText={(text) => setRfc(text)}
+					editable
 				/>
 				<TextInput
 					style={
@@ -78,6 +107,10 @@ const Formulario = (props) => {
 					autoCorrect
 					multiline
 					numberOfLines={5}
+					value={acercaDe}
+					onChangeText={(text) =>
+						setAcercaDe(text)
+					}
 				/>
 				<TextInput
 					style={
@@ -88,6 +121,10 @@ const Formulario = (props) => {
 					placeholder='Teléfono'
 					keyboardType='phone-pad'
 					maxLength={10}
+					value={telefono}
+					onChangeText={(text) =>
+						setTelefono(text)
+					}
 				/>
 				<View
 					style={{
@@ -102,13 +139,20 @@ const Formulario = (props) => {
 						}}
 					>
 						<Switch
-							value={true}
+							value={valorSwitch}
+							onValueChange={() =>
+								setValorSwitch(!valorSwitch)
+							}
 							trackColor={{
-								false: '#FF0000',
-								true: '#0000FF',
+								false: '#000000',
+								true: '#00FF00',
 							}}
-							thumbColor='#ADA'
-							ios_backgroundColor='#FF0000'
+							thumbColor={
+								valorSwitch
+									? '#ccc'
+									: '#666'
+							}
+							ios_backgroundColor='#000000'
 						/>
 					</View>
 					<View
@@ -122,8 +166,12 @@ const Formulario = (props) => {
 						</Text>
 					</View>
 				</View>
-			</ScrollView>
 
+				<Button
+					title='Validar'
+					onPress={validaFormulario}
+				/>
+			</ScrollView>
 			<StatusBar />
 		</SafeAreaView>
 	);

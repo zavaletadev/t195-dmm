@@ -98,6 +98,11 @@ const App = (props) => {
 					name='EjemploCs'
 					component={TarjetaCs}
 				/>
+
+				<Stack.Screen
+					name='Formulario'
+					component={Formulario}
+				/>
 			</Stack.Navigator>
 		</NavigationContainer>
 	);

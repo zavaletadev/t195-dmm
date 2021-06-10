@@ -22,6 +22,13 @@ const Menu = (props) => {
 					props.navigation.navigate('EjemploCs')
 				}
 			/>
+
+			<Button
+				title='Formulario'
+				onPress={() =>
+					props.navigation.navigate('Formulario')
+				}
+			/>
 		</ScrollView>
 	);
 };
