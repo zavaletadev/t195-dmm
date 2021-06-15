@@ -18,6 +18,7 @@ import TarjetaCs from './src/components/TarjetaCs';
 import { NavigationContainer } from '@react-navigation/native';
 //Navegacion por stack (pila o pestañas)
 import { createStackNavigator } from '@react-navigation/stack';
+import EjemploBD from './src/components/EjemploBD';
 /*
 Existen diversas maneras de generar un estilo en RN
 Todas ellas, basadas en la versatilidad del diseño con 
@@ -102,6 +103,11 @@ const App = (props) => {
 				<Stack.Screen
 					name='Formulario'
 					component={Formulario}
+				/>
+
+				<Stack.Screen
+					name='EjemploBD'
+					component={EjemploBD}
 				/>
 			</Stack.Navigator>
 		</NavigationContainer>
