@@ -1,14 +1,14 @@
 import React from 'react';
 
-import TableroAjedrez from './src/components/TableroAjedrez';
-import EjemploFlex from './src/components/EjemploFlex';
-import EstilosComponentes from './src/components/EstilosComponentes';
-import EstilosObjeto from './src/components/EstilosObjeto';
-import EstilosArchivo from './src/components/EstilosArchivo';
-import Formulario from './src/components/Formulario';
-import Contador from './src/components/Contador';
-import Menu from './src/components/Menu';
-import TarjetaCs from './src/components/TarjetaCs';
+import TableroAjedrez from './src/screens/TableroAjedrez';
+import EjemploFlex from './src/screens/EjemploFlex';
+import EstilosComponentes from './src/screens/EstilosComponentes';
+import EstilosObjeto from './src/screens/EstilosObjeto';
+import EstilosArchivo from './src/screens/EstilosArchivo';
+import Formulario from './src/screens/Formulario';
+import Contador from './src/screens/Contador';
+import Menu from './src/screens/Menu';
+import TarjetaCs from './src/screens/TarjetaCs';
 
 /**
  * Para generar una navegación se neceita:
@@ -18,7 +18,8 @@ import TarjetaCs from './src/components/TarjetaCs';
 import { NavigationContainer } from '@react-navigation/native';
 //Navegacion por stack (pila o pestañas)
 import { createStackNavigator } from '@react-navigation/stack';
-import EjemploBD from './src/components/EjemploBD';
+import EjemploBD from './src/screens/EjemploBD';
+import EjemploFlatList from './src/screens/EjemploFlatList';
 /*
 Existen diversas maneras de generar un estilo en RN
 Todas ellas, basadas en la versatilidad del diseño con 
@@ -108,6 +109,11 @@ const App = (props) => {
 				<Stack.Screen
 					name='EjemploBD'
 					component={EjemploBD}
+				/>
+
+				<Stack.Screen
+					name='EjemploFlatList'
+					component={EjemploFlatList}
 				/>
 			</Stack.Navigator>
 		</NavigationContainer>

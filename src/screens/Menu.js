@@ -29,6 +29,18 @@ const Menu = (props) => {
 					props.navigation.navigate('Formulario')
 				}
 			/>
+
+			<Button
+				title='FlatList'
+				onPress={() =>
+					props.navigation.navigate(
+						'EjemploFlatList'
+					)
+				}
+			/>
+
+			<Button title='Contenido remoto (Fetch)' />
+			<Button title='Contenido remoto (Async)' />
 		</ScrollView>
 	);
 };
