@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
-import { ScrollView, FlatList, Text } from 'react-native';
+import {
+	ScrollView,
+	FlatList,
+	Text,
+	View,
+	TouchableOpacity,
+} from 'react-native';
 import TarjetaItem from '../components/TarjetaItem';
 
 /*
@@ -7,12 +13,13 @@ Arreglo de 15000 elementos
 'Elemento ${i}'
 */
 const datos = [];
-for (let i = 1; i <= 15000; i++) {
+for (let i = 1; i <= 15; i++) {
 	datos.push(`Elemento ${i}`);
 }
 
 const EjemploFlatList = (props) => {
 	const [arreglo, setArreglo] = useState(datos);
+	const [elemPin, setElemPin] = useState(0);
 
 	/**
 	 * FlatList es un componente para mostrar
@@ -30,12 +37,37 @@ const EjemploFlatList = (props) => {
 	 */
 	return (
 		<FlatList
+			ListHeaderComponent={() => (
+				<View
+					style={{
+						padding: 30,
+						backgroundColor: '#B8B8FF',
+					}}
+				>
+					<Text>Encabezado</Text>
+				</View>
+			)}
+			stickyHeaderIndices={[elemPin]}
+			ListFooterComponent={() => (
+				<View
+					style={{
+						padding: 30,
+						backgroundColor: '#B8B8FF',
+					}}
+				>
+					<Text>Footer</Text>
+				</View>
+			)}
 			data={arreglo}
 			renderItem={(item) => (
-				<TarjetaItem
-					elemento={item.item}
-					indice={item.index}
-				/>
+				<TouchableOpacity
+					onPress={() => setElemPin(item.index)}
+				>
+					<TarjetaItem
+						elemento={item.item}
+						indice={item.index}
+					/>
+				</TouchableOpacity>
 			)}
 			keyExtractor={(item, index) => `ti-${index}`}
 		/>
