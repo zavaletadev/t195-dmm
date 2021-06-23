@@ -20,6 +20,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import EjemploBD from './src/screens/EjemploBD';
 import EjemploFlatList from './src/screens/EjemploFlatList';
+import EjemploFetch from './src/screens/EjemploFetch';
 /*
 Existen diversas maneras de generar un estilo en RN
 Todas ellas, basadas en la versatilidad del diseño con 
@@ -114,6 +115,11 @@ const App = (props) => {
 				<Stack.Screen
 					name='EjemploFlatList'
 					component={EjemploFlatList}
+				/>
+
+				<Stack.Screen
+					name='EjemploFetch'
+					component={EjemploFetch}
 				/>
 			</Stack.Navigator>
 		</NavigationContainer>

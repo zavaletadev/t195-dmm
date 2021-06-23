@@ -39,7 +39,14 @@ const Menu = (props) => {
 				}
 			/>
 
-			<Button title='Contenido remoto (Fetch)' />
+			<Button
+				title='Contenido remoto (Fetch)'
+				onPress={() =>
+					props.navigation.navigate(
+						'EjemploFetch'
+					)
+				}
+			/>
 			<Button title='Contenido remoto (Async)' />
 		</ScrollView>
 	);
