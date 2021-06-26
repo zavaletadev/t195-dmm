@@ -47,7 +47,14 @@ const Menu = (props) => {
 					)
 				}
 			/>
-			<Button title='Contenido remoto (Async)' />
+			<Button
+				title='Contenido remoto (Async)'
+				onPress={() =>
+					props.navigation.navigate(
+						'EjemploAsync'
+					)
+				}
+			/>
 		</ScrollView>
 	);
 };
