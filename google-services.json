@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "84711801345",
+    "project_id": "firulapp195",
+    "storage_bucket": "firulapp195.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:84711801345:android:94e48caf82ff24cba8b600",
+        "android_client_info": {
+          "package_name": "mx.edu.uteq.dmm.firulapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "84711801345-07qflffrc1epplmp9g4ah11n887s0afm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "mx.edu.uteq.dmm.firulapp",
+            "certificate_hash": "1cc84cfbf74ee9923d05d9a41e48baefc120c0d9"
+          }
+        },
+        {
+          "client_id": "84711801345-p4onho62l4a47lfai7tjvk49cnjob8rq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJJLRfYjypEvgYfE1IAlzob2FGy5Z-8Qk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "84711801345-p4onho62l4a47lfai7tjvk49cnjob8rq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "84711801345-7l96fnkfb3tae2tgl05v4nc3stg270p3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "mx.edu.uteq.dmm.firulapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

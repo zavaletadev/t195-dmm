@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>84711801345-7l96fnkfb3tae2tgl05v4nc3stg270p3.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.84711801345-7l96fnkfb3tae2tgl05v4nc3stg270p3</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>84711801345-07qflffrc1epplmp9g4ah11n887s0afm.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCnq-sHQVoHVKVqKhV0P6UqbTm02lLGfuA</string>
+	<key>GCM_SENDER_ID</key>
+	<string>84711801345</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>mx.edu.uteq.dmm.firulapp</string>
+	<key>PROJECT_ID</key>
+	<string>firulapp195</string>
+	<key>STORAGE_BUCKET</key>
+	<string>firulapp195.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:84711801345:ios:854e9bf07678dfb5a8b600</string>
+</dict>
+</plist>
