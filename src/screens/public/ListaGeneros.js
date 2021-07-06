@@ -43,10 +43,34 @@ const ListaGeneros = (props) => {
 	};
 
 	/*
+    Un snapshot es una versión en caché de la 
+    consulta, sincronizada con el servidor, atenta
+    a cualquier cambio para que, de manera automática
+    se actualice con el origen de datos
+    */
+	const snapGeneros = () => {
+		firebase.database
+			.collection('generos')
+			.onSnapshot((snapShot) => {
+				if (snapShot.size > 0) {
+					const arrG = [];
+					snapShot.forEach((doc) => {
+						arrG.push({
+							id: doc.id,
+							...doc.data(),
+						});
+					});
+					setGeneros(arrG);
+				}
+			});
+	};
+
+	/*
     Invocamos justo al inicio, la consulta de géneros
     */
 	useEffect(() => {
-		getGeneros();
+		//getGeneros();
+		snapGeneros();
 	}, []);
 
 	return (
