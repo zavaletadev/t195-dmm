@@ -5,13 +5,14 @@ import Login from './src/screens/public/Login';
 import Registro from './src/screens/public/Registro';
 import HomeDrawer from './src/screens/private/HomeDrawer';
 import ListaGeneros from './src/screens/public/ListaGeneros';
-import { Text, TouchableOpacity } from 'react-native';
+import { LogBox, TouchableOpacity } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import AgregarGenero from './src/screens/public/AgregarGenero';
 
 const Stack = createStackNavigator();
 
 export default function App() {
+	LogBox.ignoreLogs(['Setting a timer']);
 	return (
 		<NavigationContainer>
 			{/* <Stack.Navigator initialRouteName='Login'> */}
