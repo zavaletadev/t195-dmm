@@ -8,6 +8,7 @@ import ListaGeneros from './src/screens/public/ListaGeneros';
 import { LogBox, TouchableOpacity } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import AgregarGenero from './src/screens/public/AgregarGenero';
+import EditarGenero from './src/screens/public/EditarGenero';
 
 const Stack = createStackNavigator();
 
@@ -61,6 +62,12 @@ export default function App() {
 					}}
 					name='AgregarGenero'
 					component={AgregarGenero}
+				/>
+
+				<Stack.Screen
+					options={{ title: 'Editar género' }}
+					name='EditarGenero'
+					component={EditarGenero}
 				/>
 			</Stack.Navigator>
 		</NavigationContainer>

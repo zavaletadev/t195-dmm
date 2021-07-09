@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { FlatList, Text, View } from 'react-native';
+import { FlatList } from 'react-native';
+import GeneroItem from '../../components/GeneroItem';
 import firebase from './../../backend/firebase';
-import { FontAwesome5 } from '@expo/vector-icons';
 
 const ListaGeneros = (props) => {
 	// Crear un efecto al cargar el screen para
@@ -78,29 +78,10 @@ const ListaGeneros = (props) => {
 			data={generos}
 			keyExtractor={(item) => item.id}
 			renderItem={(item) => (
-				<View
-					style={{
-						margin: 10,
-						padding: 30,
-						backgroundColor: 'tomato',
-						borderRadius: 10,
-					}}
-				>
-					<Text
-						style={{
-							color: '#fff',
-							fontSize: 22,
-						}}
-					>
-						<FontAwesome5
-							name='tag'
-							color='#fff'
-							size={22}
-						/>
-						{'    '}
-						{item.item.nombre}
-					</Text>
-				</View>
+				<GeneroItem
+					item={item.item}
+					navigation={props.navigation}
+				/>
 			)}
 		/>
 	);
