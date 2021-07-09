@@ -9,6 +9,9 @@ import { LogBox, TouchableOpacity } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import AgregarGenero from './src/screens/public/AgregarGenero';
 import EditarGenero from './src/screens/public/EditarGenero';
+import Practica1U2 from './src/screens/public/Practica1U2';
+import ListaPeliculas from './src/screens/public/ListaPeliculas';
+import AgregarPelicula from './src/screens/public/AgregarPelicula';
 
 const Stack = createStackNavigator();
 
@@ -17,7 +20,11 @@ export default function App() {
 	return (
 		<NavigationContainer>
 			{/* <Stack.Navigator initialRouteName='Login'> */}
-			<Stack.Navigator initialRouteName='ListaGeneros'>
+			<Stack.Navigator initialRouteName='Practica1U2'>
+				<Stack.Screen
+					name='Practica1U2'
+					component={Practica1U2}
+				/>
 				<Stack.Screen
 					name='Login'
 					component={Login}
@@ -68,6 +75,37 @@ export default function App() {
 					options={{ title: 'Editar género' }}
 					name='EditarGenero'
 					component={EditarGenero}
+				/>
+
+				<Stack.Screen
+					options={(propsScreen) => ({
+						title: 'Géneros',
+						headerRight: () => (
+							<TouchableOpacity
+								style={{
+									paddingHorizontal: 20,
+									paddingVertical: 10,
+								}}
+								onPress={() =>
+									propsScreen.navigation.navigate(
+										'AgregarPelicula'
+									)
+								}
+							>
+								<MaterialIcons
+									name='library-add'
+									color='tomato'
+									size={28}
+								/>
+							</TouchableOpacity>
+						),
+					})}
+					name='ListaPeliculas'
+					component={ListaPeliculas}
+				/>
+				<Stack.Screen
+					name='AgregarPelicula'
+					component={AgregarPelicula}
 				/>
 			</Stack.Navigator>
 		</NavigationContainer>
