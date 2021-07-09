@@ -1,11 +1,46 @@
 import React from 'react';
+
 import {
 	FontAwesome5,
 	Feather,
 	Fontisto,
 } from '@expo/vector-icons';
-import { Text, TouchableOpacity, View } from 'react-native';
+
+import {
+	Alert,
+	Text,
+	TouchableOpacity,
+	View,
+} from 'react-native';
+
+import firebase from './../backend/firebase';
 const GeneroItem = (props) => {
+	const eliminarGenero = async () => {
+		Alert.alert(
+			'Eliminar género',
+			`¿Realmente deseas eliminar el género "${props.item.nombre}"?` +
+				'\n\nEsta acción, no puede deshacerse.',
+			[
+				{
+					text: 'Cancelar',
+					onPress: null,
+				},
+				{
+					text: 'Eliminar',
+					onPress: async () => {
+						await firebase.database
+							.collection('generos')
+							.doc(props.item.id)
+							.delete();
+
+						Alert.alert('Eliminado');
+					},
+					style: 'destructive',
+				},
+			]
+		);
+	};
+
 	return (
 		<View
 			style={{
@@ -77,6 +112,7 @@ const GeneroItem = (props) => {
 						padding: 10,
 						borderRadius: 10,
 					}}
+					onPress={eliminarGenero}
 				>
 					<Fontisto
 						name='trash'
