@@ -36,6 +36,7 @@ export default function App() {
 				<Stack.Screen
 					name='HomeDrawer'
 					component={HomeDrawer}
+					options={{ gestureEnabled: false }}
 				/>
 				<Stack.Screen
 					options={(propsScreen) => ({

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
+import { DrawerActions } from '@react-navigation/core';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import Feed from './Feed';
 import AdopcionTab from './AdopcionTab';
@@ -6,6 +7,11 @@ import Awww from './Awww';
 import Solicitudes from './Solicitudes';
 import Perfil from './Perfil';
 import Salir from './Salir';
+import Sidebar from '../../components/Sidebar';
+import { TouchableWithoutFeedback } from 'react-native';
+
+import { Entypo } from '@expo/vector-icons';
+
 const Drawer = createDrawerNavigator();
 
 /**
@@ -18,12 +24,53 @@ const Drawer = createDrawerNavigator();
  * de los elementos navegables
  */
 const HomeDrawer = (props) => {
+	/*
+    useEffect -> ciclo de vida de un componente 
+    (full component/ fragment component)
+    --Se ejecuta despues de presentar la UI--
+
+    useLayoutEffect -> ciclo de vida de un componente 
+    (full component/ fragment component)
+    --Se ejecuta antes de presentar la UI--
+    */
+	useLayoutEffect(() => {
+		/*
+        Justo antes de mostrar la UI vamos a modificar 
+        el boton izquierdo del header de menú
+        */
+		props.navigation.setOptions({
+			headerLeft: () => (
+				<TouchableWithoutFeedback
+					onPress={() =>
+						props.navigation.dispatch(
+							DrawerActions.toggleDrawer()
+						)
+					}
+				>
+					<Entypo
+						name='menu'
+						size={32}
+						color='tomato'
+						style={{
+							paddingVertical: 5,
+							paddingLeft: 5,
+							paddingRight: 20,
+						}}
+					/>
+				</TouchableWithoutFeedback>
+			),
+		});
+	}, []);
+
 	return (
 		/**
 		 * No necesitamos un NavigationContainer porque
 		 * App.js (Nuestro padre) lo ha implementado
 		 * */
-		<Drawer.Navigator>
+		<Drawer.Navigator
+			initialRouteName='Feed'
+			drawerContent={() => <Sidebar {...props} />}
+		>
 			<Drawer.Screen name='Feed' component={Feed} />
 
 			<Drawer.Screen

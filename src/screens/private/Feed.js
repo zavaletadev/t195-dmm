@@ -1,7 +1,12 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
+import firebase from './../../backend/firebase';
+
 const Feed = (props) => {
+	/*
+    Tomamos el id del usuario actual
+    */
 	return (
 		<View
 			style={{

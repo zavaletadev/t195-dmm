@@ -38,15 +38,57 @@ const Registro = (props) => {
             Insertamos un usuario en auth con 
             usuario y contraseña
             */
+			//console.log(formData);
 			const nuevoUsuario =
 				await firebase.auth.createUserWithEmailAndPassword(
 					formData.email,
 					formData.pass
 				);
-			console.log(nuevoUsuario);
+			//console.log(nuevoUsuario);
+
+			/*
+            Agregamos el 'displayName' y photoUrl a los 
+            datos de autenticación de nuestros usuarios
+            */
+			await nuevoUsuario.user.updateProfile({
+				displayName: formData.nombre,
+				photoURL:
+					'https://firebasestorage.googleapis.com/v0/b/firulapp195.appspot.com/o/avatars%2Fno_avatar.png?alt=media&token=b2b1c871-bf7b-4030-9a1d-cab1c9388a6c',
+			});
+
+			/*
+            Despues de agregar al usuario en la lista 
+            de usuarios auth, agregamos su uid y su nombre
+            a nuestra coleccion de usuarios
+            */
+			await firebase.database
+				.collection('usuarios')
+				.add({
+					authId: nuevoUsuario.user.uid,
+					nombreCompleto: formData.nombre,
+				});
+
+			//Enviamos correo para validar email
+			await nuevoUsuario.user.sendEmailVerification();
+
+			Alert.alert(
+				'Usuario registrado',
+				'Por favor valida tu cuenta e inicia sesión',
+				[
+					{
+						text: 'Entendido',
+						onPress: () =>
+							props.navigation.navigate(
+								'Login'
+							),
+					},
+				]
+			);
+
 			setCargando(false);
 		} catch (e) {
 			setCargando(false);
+			console.log(e);
 			console.log(JSON.stringify(e));
 			Alert.alert('ERROR', errores_mx(e.code));
 		}
