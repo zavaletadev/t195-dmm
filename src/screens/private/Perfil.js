@@ -14,6 +14,14 @@ import { Feather } from '@expo/vector-icons';
 
 import firebase from './../../backend/firebase';
 
+/*
+Para utilizar cualquier hardware del dispositivo es necesario
+preguntar al usuario si nos concede el permiso, de lo contrario
+no podemos continuar
+*/
+import * as ImagePicker from 'expo-image-picker';
+import * as Permissions from 'expo-image-picker';
+
 const Perfil = (props) => {
 	const [cargando, setCargando] = useState(false);
 	const [formData, setFormData] = useState({
@@ -21,6 +29,49 @@ const Perfil = (props) => {
 		nombre: firebase.auth.currentUser.displayName,
 		avatar: firebase.auth.currentUser.photoURL,
 	});
+
+	/*
+    Funcion flecha que permita acceder a 
+    la galería y tomar una foto
+    */
+	const getImagenGaleria = async () => {
+		/**
+		 * Preuntamos por el permiso de ingresar a su galería
+		 */
+		const { status } =
+			await ImagePicker.requestMediaLibraryPermissionsAsync();
+
+		/*
+        Si el usuario nos dió permiso, continuamos
+        */
+		if (status === 'granted') {
+			/**
+			 * Tomamos la imagen de la galería
+			 */
+			const imgGaleria =
+				await ImagePicker.launchImageLibraryAsync({
+					//Tipo de elemento d ela galería (img / videos / todo)
+					mediaTypes:
+						ImagePicker.MediaTypeOptions.Images,
+					//
+					allowsEditing: true,
+					//Relación de aspecto
+					aspect: [1, 1],
+					quality: 1,
+				});
+			console.log(imgGaleria);
+			/*
+            Si se seleccionó una imagen, 
+            continuamos
+            */
+			if (!imgGaleria.cancelled) {
+				setFormData({
+					...formData,
+					['avatar']: imgGaleria.uri,
+				});
+			}
+		}
+	};
 
 	return (
 		<View
@@ -66,6 +117,7 @@ const Perfil = (props) => {
 					height: 200,
 					borderRadius: 100,
 					position: 'relative',
+					overflow: 'hidden',
 				}}
 			>
 				<TouchableOpacity
@@ -75,10 +127,11 @@ const Perfil = (props) => {
 						borderWidth: 2,
 						borderColor: '#000',
 						backgroundColor: '#000',
-						width: '50%',
+						width: '100%',
 						borderRadius: 7,
-						bottom: 10,
+						bottom: 0,
 						left: 0,
+						alignItems: 'center',
 					}}
 					onPress={() =>
 						Alert.alert(
@@ -92,15 +145,15 @@ const Perfil = (props) => {
 								{ text: 'Desde la cámara' },
 								{
 									text: 'Desde la galería',
+									onPress:
+										getImagenGaleria,
 								},
 							]
 						)
 					}
 				>
 					<Text style={{ color: '#fff' }}>
-						<Feather name='edit-2' size={20} />
-						{'  '}
-						Editar
+						<Feather name='edit-2' size={24} />
 					</Text>
 				</TouchableOpacity>
 			</ImageBackground>
