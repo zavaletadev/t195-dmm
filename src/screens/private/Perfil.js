@@ -73,6 +73,53 @@ const Perfil = (props) => {
 		}
 	};
 
+	/**
+	 * FF para tomar una fotografía desde la cámara
+	 */
+	const getImagenCamara = async () => {
+		console.log('Aqui');
+		/*
+        Pedir permiso de acceso a la cámara
+        Y a la galería
+        */
+		const permisoCamara =
+			await ImagePicker.requestCameraPermissionsAsync();
+		const permisoGaleria =
+			await ImagePicker.requestMediaLibraryPermissionsAsync();
+
+		/**
+		 * Si tenemos ambos permisos
+		 */
+		console.log(permisoCamara);
+		console.log(permisoGaleria);
+		if (
+			permisoCamara.status === 'granted' &&
+			permisoGaleria.status === 'granted'
+		) {
+			/*
+            Tomamos la imgen desde la cámara utilizando
+            los mismo parámetros que la galería */
+			const imgCamara =
+				await ImagePicker.launchCameraAsync({
+					mediaTypes:
+						ImagePicker.MediaTypeOptions.Images,
+					allowsEditing: true,
+					aspect: [4, 4],
+					quality: 1,
+				});
+
+			/*
+            Si se lecciono una foto
+            */
+			if (!imgCamara.cancelled) {
+				setFormData({
+					...formData,
+					['avatar']: imgCamara.uri,
+				});
+			}
+		}
+	};
+
 	return (
 		<View
 			style={{
@@ -142,7 +189,11 @@ const Perfil = (props) => {
 									text: 'Cencelar',
 									style: 'destructive',
 								},
-								{ text: 'Desde la cámara' },
+								{
+									text: 'Desde la cámara',
+									onPress:
+										getImagenCamara,
+								},
 								{
 									text: 'Desde la galería',
 									onPress:
