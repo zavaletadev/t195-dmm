@@ -359,6 +359,10 @@ const Perfil = (props) => {
 								);
 
 								setCargando(false);
+								setFormData({
+									...formData,
+									['avatarNuevo']: false,
+								});
 
 								Alert.alert(
 									'Datos actualizados'
