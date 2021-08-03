@@ -11,6 +11,7 @@ import Sidebar from '../../components/Sidebar';
 import { TouchableWithoutFeedback } from 'react-native';
 
 import { Entypo } from '@expo/vector-icons';
+import EjemploUbicacion from './EjemploUbicacion';
 
 const Drawer = createDrawerNavigator();
 
@@ -88,6 +89,11 @@ const HomeDrawer = (props) => {
 			<Drawer.Screen
 				name='Perfil'
 				component={Perfil}
+			/>
+
+			<Drawer.Screen
+				name='Ubicacion'
+				component={EjemploUbicacion}
 			/>
 
 			<Drawer.Screen name='Salir' component={Salir} />

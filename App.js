@@ -12,6 +12,7 @@ import EditarGenero from './src/screens/public/EditarGenero';
 import Practica1U2 from './src/screens/public/Practica1U2';
 import ListaPeliculas from './src/screens/public/ListaPeliculas';
 import AgregarPelicula from './src/screens/public/AgregarPelicula';
+import EjemploUbicacion from './src/screens/private/EjemploUbicacion';
 
 const Stack = createStackNavigator();
 
@@ -19,8 +20,10 @@ export default function App() {
 	LogBox.ignoreLogs(['Setting a timer']);
 	return (
 		<NavigationContainer>
-			{/* <Stack.Navigator initialRouteName='Login'> */}
-			<Stack.Navigator initialRouteName='Login'>
+			<Stack.Navigator
+				initialRouteName='StackUbicacion'
+				headerMode='float'
+			>
 				<Stack.Screen
 					name='Practica1U2'
 					component={Practica1U2}
@@ -107,6 +110,11 @@ export default function App() {
 				<Stack.Screen
 					name='AgregarPelicula'
 					component={AgregarPelicula}
+				/>
+
+				<Stack.Screen
+					name='StackUbicacion'
+					component={EjemploUbicacion}
 				/>
 			</Stack.Navigator>
 		</NavigationContainer>

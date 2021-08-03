@@ -2,6 +2,7 @@ import React from 'react';
 import { ImageBackground, Text, View } from 'react-native';
 
 import {
+	Entypo,
 	MaterialCommunityIcons,
 	MaterialIcons,
 	Feather,
@@ -208,6 +209,7 @@ const Sidebar = (props) => {
 						)
 					}
 				/>
+
 				<DrawerItem
 					icon={() => (
 						<MaterialCommunityIcons
@@ -221,6 +223,23 @@ const Sidebar = (props) => {
 						props.navigation.navigate('Perfil')
 					}
 				/>
+
+				<DrawerItem
+					icon={() => (
+						<Entypo
+							name='location-pin'
+							color='tomato'
+							size={22}
+						/>
+					)}
+					label='Ubicación'
+					onPress={() =>
+						props.navigation.navigate(
+							'Ubicacion'
+						)
+					}
+				/>
+
 				<DrawerItem
 					icon={() => (
 						<MaterialCommunityIcons
