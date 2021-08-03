@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {
+	ActivityIndicator,
 	Alert,
 	Button,
 	Image,
@@ -28,6 +29,7 @@ const Perfil = (props) => {
 		email: firebase.auth.currentUser.email,
 		nombre: firebase.auth.currentUser.displayName,
 		avatar: firebase.auth.currentUser.photoURL,
+		avatarNuevo: false,
 	});
 
 	/*
@@ -67,6 +69,7 @@ const Perfil = (props) => {
 			if (!imgGaleria.cancelled) {
 				setFormData({
 					...formData,
+					['avatarNuevo']: true,
 					['avatar']: imgGaleria.uri,
 				});
 			}
@@ -114,6 +117,7 @@ const Perfil = (props) => {
 			if (!imgCamara.cancelled) {
 				setFormData({
 					...formData,
+					['avatarNuevo']: true,
 					['avatar']: imgCamara.uri,
 				});
 			}
@@ -178,6 +182,7 @@ const Perfil = (props) => {
 						borderRadius: 7,
 						bottom: 0,
 						left: 0,
+						display: cargando ? 'none' : 'flex',
 						alignItems: 'center',
 					}}
 					onPress={() =>
@@ -225,7 +230,7 @@ const Perfil = (props) => {
 					fontSize: 16,
 				}}
 				placeholder='Correo electrónico'
-				editable={!cargando}
+				editable={false}
 				value={formData.email}
 				// Guardamos lo que escribe en el
 				//state de objeto, peeeeero antes de
@@ -269,10 +274,125 @@ const Perfil = (props) => {
 				}
 			/>
 
-			<Button
-				title='Guardar cambios'
-				color='tomato'
-			/>
+			<View
+				style={{
+					display: cargando ? 'none' : 'flex',
+				}}
+			>
+				<Button
+					title='Guardar cambios'
+					color='tomato'
+					onPress={async () => {
+						setCargando(true);
+
+						/*
+                        Si cambiamos el estado del Avatar
+                        */
+						if (formData.avatarNuevo) {
+							/*
+                            NOTA:
+                            Asegúrate de agregar storage a los servicios de 
+                            firebase
+                            */
+
+							//Generar la cadena binaria del archivo
+							//BLOB
+							const blob = await (
+								await fetch(formData.avatar)
+							).blob();
+
+							/*
+                            Generamos un file para FireStore 
+                            usando 3 parametros
+                            1.- Contenido binario
+                            2.- nombre del archivo
+                            3.- config (tipo de archivo MIME)
+                            */
+							const file = new File(
+								[blob],
+								`${firebase.auth.currentUser.uid}.jpg`,
+								{ type: 'image/jpeg' }
+							);
+							blob.close();
+
+							/*
+                            Una vez creado el archivo, lo subimos a firestore storage
+                            la referencia a sotrage es desde la raíz
+                            ref() -------> Home de mi servicio
+                            child() -----> Referencia a un componente hijo
+                            put() -------> Crea un recurso en el servicio a patir de un blob
+                            */
+							const subida =
+								await firebase.storage
+									.ref()
+									.child('avatars')
+									.child(file.name)
+									.put(file, file.type);
+
+							/* 
+                            Si la subida es exitosa
+                            */
+							if (
+								subida.state === 'success'
+							) {
+								/*
+                                Solicitamos la nueva url de nuestra 
+                                imagen de perfil
+                                */
+								setFormData({
+									...formData,
+									['avatar']:
+										await subida.ref.getDownloadURL(),
+								});
+
+								/*
+                                Actualizamos los datos de perfil del 
+                                usuario
+                                */
+								firebase.auth.currentUser.updateProfile(
+									{
+										displayName:
+											formData.nombre,
+										photoURL:
+											formData.avatar,
+									}
+								);
+
+								setCargando(false);
+
+								Alert.alert(
+									'Datos actualizados'
+								);
+							}
+						} else {
+							/*
+                        Actualizamos el nombre del usuario
+                        */
+							await firebase.auth.currentUser.updateProfile(
+								{
+									displayName:
+										formData.nombre,
+								}
+							);
+							setCargando(false);
+							Alert.alert(
+								'Datos actualizados'
+							);
+						}
+					}}
+				/>
+			</View>
+
+			<View
+				style={{
+					display: cargando ? 'flex' : 'none',
+				}}
+			>
+				<ActivityIndicator
+					size='large'
+					color='tomato'
+				/>
+			</View>
 		</View>
 	);
 };
