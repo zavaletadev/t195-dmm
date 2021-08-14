@@ -349,12 +349,12 @@ const Perfil = (props) => {
                                 Actualizamos los datos de perfil del 
                                 usuario
                                 */
-								firebase.auth.currentUser.updateProfile(
+								await firebase.auth.currentUser.updateProfile(
 									{
 										displayName:
 											formData.nombre,
 										photoURL:
-											formData.avatar,
+											await subida.ref.getDownloadURL(),
 									}
 								);
 

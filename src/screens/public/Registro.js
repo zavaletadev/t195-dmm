@@ -61,7 +61,7 @@ const Registro = (props) => {
             de usuarios auth, agregamos su uid y su nombre
             a nuestra coleccion de usuarios
             */
-			await firebase.database
+			const insertCollection = await firebase.database
 				.collection('usuarios')
 				.add({
 					authId: nuevoUsuario.user.uid,

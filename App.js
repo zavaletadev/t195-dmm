@@ -21,7 +21,7 @@ export default function App() {
 	return (
 		<NavigationContainer>
 			<Stack.Navigator
-				initialRouteName='StackUbicacion'
+				initialRouteName='Login'
 				headerMode='float'
 			>
 				<Stack.Screen
